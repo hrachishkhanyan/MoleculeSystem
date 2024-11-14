@@ -1,3 +1,5 @@
+./.ipynb_checkpoints
+./.idea
 ./umap_files
 ./embedded_distances.npy
 ./conformations.txt
@@ -9,3 +11,11 @@ temp.txt
 UMAP-and_HDBSCAB.ipynb
 adj_matrix.txt
 adj_matrix_compact.txt
+conformations.txt
+Initial analysis.ipynb
+*dat
+*png
+*pdf
+*pkl
+*npy
+*gro

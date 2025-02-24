@@ -30,7 +30,7 @@ def _convert_dat(path: str):
                 if not s_s_existence[s_s_letters.index(symbol)]:
                     s_s_existence[s_s_letters.index(symbol)] = True
 
-    clean_data = clean_data[::10].T
+    clean_data = clean_data[::].T
     # Hardcoding section
     clean_data.shape = (116, 6, -1)
     reduced_array = mode(clean_data, axis=1).mode.squeeze()
@@ -49,6 +49,15 @@ def dat2png(path: str, output_file: str):
     c = ax0.pcolor(clean_data, linewidths=0, edgecolors='k', cmap='nipy_spectral', vmin=0.0, vmax=1.0)
     ax0.set_xlabel('Time (ns)')
     ax0.set_ylabel('Protein residue number')
+
+    # num_frames = 1000
+    # max_ns = 1500
+    # new_x_ticks = np.linspace(0, num_frames, num=6)  # You can adjust the number of ticks as needed
+    # new_x_tick_labels = np.linspace(0, max_ns, num=6).astype(int)
+    #
+    # ax0.set_xticks(new_x_ticks)
+    # ax0.set_xticklabels(new_x_tick_labels)
+
     colors: list = [c.cmap(c.norm(value)) for value in s_s_values]
     patches = [mpatches.Patch(color=colors[i], label=f'{s_s_descriptions[i]}') for i in range(len(colors)) if
                s_s_existence[i]]
@@ -59,6 +68,6 @@ def dat2png(path: str, output_file: str):
 
 
 if __name__ == '__main__':
-    salt = 'urea_kh2po4'
-    dat2png(fr'E:\Simulation\spider_silk\oligomer\{salt}\dssp.dat',
-            fr'C:\Users\hrach\OneDrive\Pictures\Graphs\Spider silk\oligo_{salt}_dssp.png')
+    salt = 'k_h2po4'
+    dat2png(fr'/Volumes/Backup Disk/Simulation/spider_silk/oligomer/{salt}/dssp.dat',
+            fr'/Users/hrachyaishkhanyan/Pictures/Graphs/spider_silk/oligo_{salt}_dssp.png')
